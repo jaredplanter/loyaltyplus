@@ -12,6 +12,7 @@ RSpec.describe Purchase, type: :model do
         expect(purchase.points_remaining).to eq 0
       end
     end
+
     context 'when the debits are smaller than the credits' do
       it 'subtracts the credits from the debits' do
         allow(purchase).to receive(:point_ledger_entries).and_return smaller_debits

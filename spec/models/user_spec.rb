@@ -11,6 +11,7 @@ RSpec.describe User, type: :model do
         expect(user.points_balance).to eq 0
       end
     end
+
     context 'when the point ledger is not empty' do
       it 'returns the current balance' do
         allow(user).to receive(:point_ledger_entries).and_return point_ledger_entries
