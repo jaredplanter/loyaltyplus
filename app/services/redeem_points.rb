@@ -48,8 +48,10 @@ class RedeemPoints
   end
 
   def debit_point_ledger purchase:, debit_amount:
-    new_balance = user.points_balance - debit_amount
-    purchase.point_ledger_entries.create debit: amount, balance: new_balance
-    @amount -= debit_amount
+    if debit_amount > 0
+      new_balance = user.points_balance - debit_amount
+      purchase.point_ledger_entries.create debit: debit_amount, balance: new_balance
+      @amount -= debit_amount
+    end
   end
 end

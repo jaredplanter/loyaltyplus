@@ -32,5 +32,12 @@ RSpec.describe RedeemPoints, type: :service do
         expect(redeem_points).to eq 99
       end
     end
+
+    context 'when the debit amount is 0' do
+      it 'does nothing and returns the balance' do
+        credit_100_points_to_ledger
+        expect(redeem_points).to eq 100
+      end
+    end
   end
 end
