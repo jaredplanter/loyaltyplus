@@ -10,15 +10,15 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629211014) do
+ActiveRecord::Schema.define(version: 20170630014826) do
 
   create_table "point_ledger_entries", force: :cascade do |t|
     t.integer  "purchase_id"
-    t.integer  "credit"
-    t.integer  "debit"
+    t.integer  "credit",      default: 0
+    t.integer  "debit",       default: 0
     t.integer  "balance"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "purchases", force: :cascade do |t|
