@@ -3,7 +3,9 @@
 
 ### Setup
 
-1. Initialize database, run: `rake db:migrate` (using default database, SQLite)
+1. Initialize database (uses SQLite):
+- `rake db:create`
+- `rake db:migrate`
 2. Run the tests: `rspec`
 ___
 
@@ -13,11 +15,20 @@ ___
 User has_many Purchases
 User has_many PointLedgerEntries through Purchases
 
+# User#point_ledger_entries lists all point ledger entries for au ser
+# User#purchases lists all purchases for a user
+
 Purchase belongs_to User
 Purchase has_many PointLedgerEntries
 
+# Purchase#point_ledger_entries lists all point ledger entries for a purchase
+# Purchase#user returns the associated user for a purchase
+
 PointLedgerEntry belongs_to Purchase
 PointLedgerEntry has_one User through Purchase
+
+# PointLedgerEntry#purchase returns the associated purchase
+# PointLedgerEntry#user returns the associated user
 ```
 ___
 
@@ -33,7 +44,7 @@ CreatePurchase.new(user, 100).call
 # This will create a purchase for 100 dollars and credit 100 points to the associated ledger.
 ```
 
-_`RedeemPoints` is responsible for redeeming points in first-in / first-out fashion from the current user's point ledger. Points cannot be redeemed unless the user has at least 100 points. Points can also not be redeemed if the requested amount exceeds the point balance of the current user._
+_`RedeemPoints` is responsible for redeeming points in a first-in / first-out order from the current user's point ledger. Points cannot be redeemed unless the user has at least 100 points. Points can also not be redeemed if the requested amount exceeds the point balance of the current user._
 
 User:
 ```
@@ -127,4 +138,3 @@ ___
 ##### Please let me know if you have any questions: jaredplanter@gmail.com
 
 #### To restart this example, run: `User.destroy_all`
-
