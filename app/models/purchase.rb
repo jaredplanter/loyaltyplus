@@ -3,11 +3,11 @@ class Purchase < ApplicationRecord
   has_many :point_ledger_entries, dependent: :destroy
 
   def points_remaining
-    if point_ledger[:debits] > point_ledger[:credits]
-      0
-    else
-      point_ledger[:credits] - point_ledger[:debits]
-    end
+    point_ledger[:credits] - point_ledger[:debits]
+  end
+
+  def points_earned
+    amount
   end
 
   private
