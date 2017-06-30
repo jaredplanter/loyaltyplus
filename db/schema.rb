@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170629190552) do
+ActiveRecord::Schema.define(version: 20170629211014) do
 
   create_table "point_ledger_entries", force: :cascade do |t|
     t.integer  "purchase_id"
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 20170629190552) do
 
   create_table "purchases", force: :cascade do |t|
     t.integer  "user_id"
-    t.integer  "amount"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "amount",     default: 0
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "users", force: :cascade do |t|
