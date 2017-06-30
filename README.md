@@ -19,6 +19,7 @@ Purchase has_many PointLedgerEntries
 PointLedgerEntry belongs_to Purchase
 PointLedgerEntry has_one User through Purchase
 ```
+___
 
 
 ### The way it works: Service Objects
@@ -43,11 +44,10 @@ RedeemPoints.new(user, 100).call
 ```
 
 _Both service objects return the new balance after the transaction_
-
+___
 
 ### Scope and Expectations
  _Run the following commands in `rails console`, in sequential order._
-___
 
 
 ##### 1. Enroll a Frontier Rewards member by email address and account_id
@@ -121,6 +121,7 @@ user.purchases.last.point_ledger_entries
 
 # You can see that 1000 points were taken from the previous purchase and 200 points were taken from our most recent purchase
 ```
+___
 
 ##### That's it! :) 
 ##### Please let me know if you have any questions: jaredplanter@gmail.com
