@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe CreatePurchase, type: :service do
-  let(:user) { User.create email: 'email@email.com', account_id: 'abc' }
+  let(:user) { User.create }
   subject(:create_purchase) { CreatePurchase.new(user, 1).call }
 
   describe '#call' do
